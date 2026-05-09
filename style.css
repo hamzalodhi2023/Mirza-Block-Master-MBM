@@ -112,36 +112,34 @@ nav {
 
 /* Hero Section */
 .hero {
-  /* background: linear-gradient(135deg, var(--light-bg) 0%, #e6f2ff 100%); */
-  background-image:
-    linear-gradient(rgba(0, 0, 0, 0.568), rgba(0, 0, 0, 0.568)), url(hero.png);
+  background-image: url(hero.jpeg);
   background-repeat: no-repeat;
   background-size: cover;
-  background-position: center;
+  background-position: bottom;
+  height: 80dvh;
   padding: 100px 0;
   text-align: center;
-  color: white;
+  color: var(--primary-color);
 }
 
 .hero h1 {
-  font-size: 3.5rem;
-  color: white;
-  margin-bottom: 1rem;
+  font-size: 6rem;
+  color: var(--primary-color);
   letter-spacing: 2px;
 }
 
 .hero .subtitle {
   font-size: 1.5rem;
-  color: white;
+  color: var(--primary-color);
   margin-bottom: 2rem;
-  font-weight: 300;
 }
 
 .hero p {
   font-size: 1.1rem;
-  color: white;
+  color: var(--primary-color);
   max-width: 700px;
   margin: 0 auto 2.5rem;
+  font-weight: 300;
 }
 
 .cta-button {
