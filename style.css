@@ -432,10 +432,6 @@ footer {
   box-shadow: 0 6px 25px rgba(37, 211, 102, 0.6);
 }
 
-.whatsapp-float i {
-  margin-top: 4px;
-}
-
 /* Pulse Animation */
 @keyframes pulse {
   0% {
