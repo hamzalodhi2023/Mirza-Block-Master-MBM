@@ -16,474 +16,7 @@
     <!-- Font Awesome 6 Free (CDN) -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            scroll-behavior: smooth;
-        }
-
-        :root {
-            --primary-color: #1E3A5F;
-            --secondary-color: #2C5282;
-            --accent-color: #4A90E2;
-            --light-bg: #F7FAFC;
-            --white: #FFFFFF;
-            --text-dark: #2D3748;
-            --text-light: #718096;
-            --border-color: #E2E8F0;
-            --whatsapp-green: #25D366;
-        }
-
-        body {
-            font-family: 'Roboto', sans-serif;
-            color: var(--text-dark);
-            line-height: 1.6;
-            background-color: var(--white);
-        }
-
-        h1,
-        h2,
-        h3,
-        h4,
-        h5,
-        h6 {
-            font-family: 'Oswald', sans-serif;
-            font-weight: 600;
-            color: var(--primary-color);
-        }
-
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 20px;
-        }
-
-        /* Header & Navigation */
-        header {
-            background-color: var(--white);
-            box-shadow: 0 2px 10px rgba(30, 58, 95, 0.1);
-            position: sticky;
-            top: 0;
-            z-index: 1000;
-        }
-
-        nav {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 1rem 0;
-        }
-
-        .logo {
-            font-family: 'Oswald', sans-serif;
-            font-size: 1.8rem;
-            font-weight: 700;
-            color: var(--primary-color);
-            text-decoration: none;
-            letter-spacing: 1px;
-        }
-
-        .logo span {
-            font-size: 0.9rem;
-            display: block;
-            color: var(--text-light);
-            font-weight: 400;
-        }
-
-        .nav-links {
-            display: flex;
-            list-style: none;
-            gap: 2.5rem;
-        }
-
-        .nav-links a {
-            text-decoration: none;
-            color: var(--text-dark);
-            font-weight: 500;
-            font-size: 1rem;
-            transition: color 0.3s ease;
-            position: relative;
-        }
-
-        .nav-links a::after {
-            content: '';
-            position: absolute;
-            bottom: -5px;
-            left: 0;
-            width: 0;
-            height: 2px;
-            background-color: var(--accent-color);
-            transition: width 0.3s ease;
-        }
-
-        .nav-links a:hover {
-            color: var(--primary-color);
-        }
-
-        .nav-links a:hover::after {
-            width: 100%;
-        }
-
-        .nav-links a.active {
-            color: var(--primary-color);
-        }
-
-        .nav-links a.active::after {
-            width: 100%;
-        }
-
-        .menu-toggle {
-            display: none;
-            flex-direction: column;
-            cursor: pointer;
-            gap: 5px;
-        }
-
-        .menu-toggle span {
-            width: 25px;
-            height: 3px;
-            background-color: var(--primary-color);
-            transition: all 0.3s ease;
-        }
-
-        /* Page Header */
-        .page-header {
-            background: linear-gradient(135deg, var(--light-bg) 0%, #E6F2FF 100%);
-            padding: 80px 0 60px;
-            text-align: center;
-        }
-
-        .page-header h1 {
-            font-size: 3rem;
-            margin-bottom: 1rem;
-            letter-spacing: 2px;
-        }
-
-        .page-header p {
-            font-size: 1.2rem;
-            color: var(--text-light);
-            max-width: 700px;
-            margin: 0 auto;
-        }
-
-        /* Products Section */
-        .products-section {
-            padding: 80px 0;
-            background-color: var(--white);
-        }
-
-        .products-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
-            gap: 2.5rem;
-            margin-top: 3rem;
-        }
-
-        .product-card {
-            background-color: var(--white);
-            border-radius: 15px;
-            overflow: hidden;
-            transition: all 0.3s ease;
-            border: 2px solid var(--border-color);
-            display: flex;
-            flex-direction: column;
-        }
-
-        .product-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 15px 40px rgba(30, 58, 95, 0.15);
-            border-color: var(--accent-color);
-        }
-
-        .product-image {
-            width: 100%;
-            height: 250px;
-            background: linear-gradient(135deg, var(--light-bg) 0%, #E6F2FF 100%);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .product-image i {
-            font-size: 5rem;
-            color: var(--accent-color);
-            transition: all 0.3s ease;
-        }
-
-        .product-card:hover .product-image i {
-            transform: scale(1.1);
-        }
-
-        .product-badge {
-            position: absolute;
-            top: 15px;
-            right: 15px;
-            background-color: var(--primary-color);
-            color: var(--white);
-            padding: 5px 15px;
-            border-radius: 20px;
-            font-size: 0.85rem;
-            font-weight: 600;
-        }
-
-        .product-content {
-            padding: 2rem;
-            flex-grow: 1;
-            display: flex;
-            flex-direction: column;
-        }
-
-        .product-content h3 {
-            font-size: 1.8rem;
-            margin-bottom: 1rem;
-        }
-
-        .product-content p {
-            color: var(--text-light);
-            margin-bottom: 1.5rem;
-            line-height: 1.8;
-            flex-grow: 1;
-        }
-
-        .product-features {
-            list-style: none;
-            margin-bottom: 1.5rem;
-        }
-
-        .product-features li {
-            display: flex;
-            align-items: center;
-            gap: 0.8rem;
-            margin-bottom: 0.8rem;
-            color: var(--text-dark);
-            font-size: 0.95rem;
-        }
-
-        .product-features i {
-            color: var(--whatsapp-green);
-            font-size: 0.9rem;
-        }
-
-        /* Button container */
-        .button-container {
-            display: flex;
-            flex-direction: column;
-            gap: 0.8rem;
-        }
-
-        /* Details button - now behaves like PDF link */
-        .details-button {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 0.8rem;
-            background-color: var(--light-bg);
-            color: var(--primary-color);
-            padding: 12px 25px;
-            text-decoration: none;
-            border: 2px solid var(--primary-color);
-            border-radius: 8px;
-            font-weight: 600;
-            font-size: 1rem;
-            transition: all 0.3s ease;
-            cursor: pointer;
-            width: 100%;
-            font-family: inherit;
-        }
-
-        .details-button:hover {
-            background-color: var(--primary-color);
-            color: var(--white);
-            transform: translateY(-2px);
-            box-shadow: 0 5px 15px rgba(30, 58, 95, 0.2);
-        }
-
-        .details-button i {
-            font-size: 1.1rem;
-        }
-
-        .whatsapp-button {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 0.8rem;
-            background-color: var(--whatsapp-green);
-            color: var(--white);
-            padding: 15px 25px;
-            text-decoration: none;
-            border-radius: 8px;
-            font-weight: 600;
-            font-size: 1.05rem;
-            transition: all 0.3s ease;
-            box-shadow: 0 4px 15px rgba(37, 211, 102, 0.3);
-        }
-
-        .whatsapp-button:hover {
-            background-color: #20BA5A;
-            transform: translateY(-2px);
-            box-shadow: 0 6px 20px rgba(37, 211, 102, 0.4);
-        }
-
-        .whatsapp-button i {
-            font-size: 1.3rem;
-        }
-
-        /* Categories Filter (optional) */
-        .categories {
-            text-align: center;
-            margin-bottom: 3rem;
-        }
-
-        .category-buttons {
-            display: flex;
-            justify-content: center;
-            gap: 1rem;
-            flex-wrap: wrap;
-            margin-top: 2rem;
-        }
-
-        .category-btn {
-            padding: 12px 30px;
-            background-color: var(--light-bg);
-            color: var(--text-dark);
-            border: 2px solid var(--border-color);
-            border-radius: 25px;
-            cursor: pointer;
-            font-weight: 500;
-            font-size: 1rem;
-            transition: all 0.3s ease;
-        }
-
-        .category-btn:hover,
-        .category-btn.active {
-            background-color: var(--primary-color);
-            color: var(--white);
-            border-color: var(--primary-color);
-        }
-
-        /* Footer */
-        footer {
-            background-color: var(--primary-color);
-            color: var(--white);
-            padding: 3rem 0 1.5rem;
-        }
-
-        .footer-content {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 3rem;
-            margin-bottom: 2rem;
-        }
-
-        .footer-section h3 {
-            color: var(--white);
-            margin-bottom: 1.5rem;
-            font-size: 1.5rem;
-        }
-
-        .footer-section p,
-        .footer-section a {
-            color: rgba(255, 255, 255, 0.8);
-            text-decoration: none;
-            line-height: 2;
-        }
-
-        .footer-section a:hover {
-            color: var(--white);
-        }
-
-        .social-links {
-            display: flex;
-            gap: 1rem;
-            margin-top: 1rem;
-        }
-
-        .social-links a {
-            width: 40px;
-            height: 40px;
-            background-color: rgba(255, 255, 255, 0.1);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            transition: all 0.3s ease;
-        }
-
-        .social-links a:hover {
-            background-color: var(--accent-color);
-        }
-
-        .footer-bottom {
-            text-align: center;
-            padding-top: 2rem;
-            border-top: 1px solid rgba(255, 255, 255, 0.1);
-            color: rgba(255, 255, 255, 0.6);
-        }
-
-        /* Responsive Design */
-        @media (max-width: 768px) {
-            .menu-toggle {
-                display: flex;
-            }
-
-            .nav-links {
-                position: absolute;
-                top: 100%;
-                left: 0;
-                right: 0;
-                background-color: var(--white);
-                flex-direction: column;
-                gap: 0;
-                padding: 1rem 0;
-                box-shadow: 0 5px 15px rgba(30, 58, 95, 0.1);
-                display: none;
-            }
-
-            .nav-links.active {
-                display: flex;
-            }
-
-            .nav-links li {
-                padding: 1rem 2rem;
-                border-bottom: 1px solid var(--border-color);
-            }
-
-            .nav-links a::after {
-                display: none;
-            }
-
-            .page-header h1 {
-                font-size: 2.2rem;
-            }
-
-            .products-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .category-buttons {
-                flex-direction: column;
-                align-items: center;
-            }
-
-            .category-btn {
-                width: 100%;
-                max-width: 300px;
-            }
-
-            .footer-content {
-                grid-template-columns: 1fr;
-                text-align: center;
-            }
-
-            .social-links {
-                justify-content: center;
-            }
-        }
-    </style>
+    <link rel="stylesheet" href="product.css">
 </head>
 
 <body>
@@ -525,7 +58,7 @@
                 <!-- Product 1: SN Series Plummer Block -->
                 <div class="product-card" data-category="plummer">
                     <div class="product-image">
-                        <i class="fas fa-cog"></i>
+                        <img src="/products-images/Rimberio Tumbler(9).jpg" alt="">
                     </div>
                     <div class="product-content">
                         <h3>SN Series Plummer Block</h3>
@@ -538,7 +71,8 @@
                         </ul>
                         <div class="button-container">
                             <!-- See Details button opens PDF directly -->
-                            <button class="details-button" data-pdf="pdfs/SN_Series_Plummer_Block.pdf">
+                            <button class="details-button"
+                                data-pdf="./Products-pdf/1500 Series Light Duty Pillow Block Bearing.pdf">
                                 <i class="fas fa-file-pdf"></i>
                                 See Details (PDF)
                             </button>
@@ -565,7 +99,8 @@
                             <li><i class="fas fa-check-circle"></i> Long service life</li>
                         </ul>
                         <div class="button-container">
-                            <button class="details-button" data-pdf="pdfs/SD_Series_Plummer_Block.pdf">
+                            <button class="details-button"
+                                data-pdf="./Products-pdf/F 200-300 Series Four-Bolt Flange Bearing Unit.pdf">
                                 <i class="fas fa-file-pdf"></i>
                                 See Details (PDF)
                             </button>
@@ -592,7 +127,8 @@
                             <li><i class="fas fa-check-circle"></i> Heavy-duty performance</li>
                         </ul>
                         <div class="button-container">
-                            <button class="details-button" data-pdf="pdfs/SNL_Series_Plummer_Block.pdf">
+                            <button class="details-button"
+                                data-pdf="./Products-pdf/FC 200-300 Series Round Flange Bearing Unit (4-Bolt Flange Bearing).pdf">
                                 <i class="fas fa-file-pdf"></i>
                                 See Details (PDF)
                             </button>
@@ -619,7 +155,8 @@
                             <li><i class="fas fa-check-circle"></i> Reliable performance</li>
                         </ul>
                         <div class="button-container">
-                            <button class="details-button" data-pdf="pdfs/UCP_Series_Pillow_Block.pdf">
+                            <button class="details-button"
+                                data-pdf="./Products-pdf/FL 200-300 Series Flange Bearing Unit (Two-Bolt Flange Unit).pdf">
                                 <i class="fas fa-file-pdf"></i>
                                 See Details (PDF)
                             </button>
@@ -646,7 +183,8 @@
                             <li><i class="fas fa-check-circle"></i> Easy maintenance</li>
                         </ul>
                         <div class="button-container">
-                            <button class="details-button" data-pdf="pdfs/UCF_Series_Pillow_Block.pdf">
+                            <button class="details-button"
+                                data-pdf="./Products-pdf/P 200-300 Series Pillow Block Bearing (Plummer Block Housing).pdf">
                                 <i class="fas fa-file-pdf"></i>
                                 See Details (PDF)
                             </button>
@@ -672,7 +210,8 @@
                             <li><i class="fas fa-check-circle"></i> High precision</li>
                         </ul>
                         <div class="button-container">
-                            <button class="details-button" data-pdf="pdfs/UCT_Series_Pillow_Block.pdf">
+                            <button class="details-button"
+                                data-pdf="./Products-pdf/PA 200-300 Series Pillow Block Bearing Unit.pdf">
                                 <i class="fas fa-file-pdf"></i>
                                 See Details (PDF)
                             </button>
@@ -699,7 +238,8 @@
                             <li><i class="fas fa-check-circle"></i> Chemical resistant</li>
                         </ul>
                         <div class="button-container">
-                            <button class="details-button" data-pdf="pdfs/Stainless_Steel_Series.pdf">
+                            <button class="details-button"
+                                data-pdf="./Products-pdf/PB 200-300 Series Pillow Block Bearing Unit.pdf">
                                 <i class="fas fa-file-pdf"></i>
                                 See Details (PDF)
                             </button>
@@ -725,7 +265,8 @@
                             <li><i class="fas fa-check-circle"></i> Special lubricants</li>
                         </ul>
                         <div class="button-container">
-                            <button class="details-button" data-pdf="pdfs/High_Temperature_Series.pdf">
+                            <button class="details-button"
+                                data-pdf="./Products-pdf/PH 200-300 Series Hanger Bearing Unit.pdf">
                                 <i class="fas fa-file-pdf"></i>
                                 See Details (PDF)
                             </button>
@@ -752,7 +293,95 @@
                             <li><i class="fas fa-check-circle"></i> Perfect fit</li>
                         </ul>
                         <div class="button-container">
-                            <button class="details-button" data-pdf="pdfs/Custom_Solutions.pdf">
+                            <button class="details-button"
+                                data-pdf="./Products-pdf/SD 500-600 Series Heavy Duty Bearing Housing.pdf">
+                                <i class="fas fa-file-pdf"></i>
+                                See Details (PDF)
+                            </button>
+                            <a href="#" class="whatsapp-button" onclick="sendWhatsApp('Custom Solutions')">
+                                <i class="fab fa-whatsapp"></i>
+                                Inquire on WhatsApp
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Product 10: Custom Solutions -->
+                <div class="product-card" data-category="special">
+                    <div class="product-image">
+                        <i class="fas fa-shield-alt"></i>
+                    </div>
+                    <div class="product-content">
+                        <h3>Custom Solutions</h3>
+                        <p>Tailored bearing block solutions designed specifically for your unique industrial
+                            requirements.</p>
+                        <ul class="product-features">
+                            <li><i class="fas fa-check-circle"></i> Custom design</li>
+                            <li><i class="fas fa-check-circle"></i> Expert consultation</li>
+                            <li><i class="fas fa-check-circle"></i> Perfect fit</li>
+                        </ul>
+                        <div class="button-container">
+                            <button class="details-button"
+                                data-pdf="./Products-pdf/SN 500 Series Medium Duty Pillow Block Housing.pdf">
+
+                                <i class="fas fa-file-pdf"></i>
+                                See Details (PDF)
+                            </button>
+                            <a href="#" class="whatsapp-button" onclick="sendWhatsApp('Custom Solutions')">
+                                <i class="fab fa-whatsapp"></i>
+                                Inquire on WhatsApp
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Product 11: Custom Solutions -->
+                <div class="product-card" data-category="special">
+                    <div class="product-image">
+                        <i class="fas fa-shield-alt"></i>
+                    </div>
+                    <div class="product-content">
+                        <h3>Custom Solutions</h3>
+                        <p>Tailored bearing block solutions designed specifically for your unique industrial
+                            requirements.</p>
+                        <ul class="product-features">
+                            <li><i class="fas fa-check-circle"></i> Custom design</li>
+                            <li><i class="fas fa-check-circle"></i> Expert consultation</li>
+                            <li><i class="fas fa-check-circle"></i> Perfect fit</li>
+                        </ul>
+                        <div class="button-container">
+                            <button class="details-button"
+                                data-pdf="./Products-pdf/T 200- 300 Series Bearing Housing.pdf">
+
+                                <i class="fas fa-file-pdf"></i>
+                                See Details (PDF)
+                            </button>
+                            <a href="#" class="whatsapp-button" onclick="sendWhatsApp('Custom Solutions')">
+                                <i class="fab fa-whatsapp"></i>
+                                Inquire on WhatsApp
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Product 12: Custom Solutions -->
+                <div class="product-card" data-category="special">
+                    <div class="product-image">
+                        <i class="fas fa-shield-alt"></i>
+                    </div>
+                    <div class="product-content">
+                        <h3>Custom Solutions</h3>
+                        <p>Tailored bearing block solutions designed specifically for your unique industrial
+                            requirements.</p>
+                        <ul class="product-features">
+                            <li><i class="fas fa-check-circle"></i> Custom design</li>
+                            <li><i class="fas fa-check-circle"></i> Expert consultation</li>
+                            <li><i class="fas fa-check-circle"></i> Perfect fit</li>
+                        </ul>
+                        <div class="button-container">
+                            <button class="details-button"
+                                data-pdf="./Products-pdf/Triangle Block Bearing Unit (Three-Bolt Flange Bearing).pdf">
+
                                 <i class="fas fa-file-pdf"></i>
                                 See Details (PDF)
                             </button>
