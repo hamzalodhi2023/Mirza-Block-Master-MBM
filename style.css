@@ -177,7 +177,7 @@ nav {
 .section-subtitle {
   text-align: center;
   color: var(--text-light);
-  margin-bottom: 3rem;
+  /* margin-bottom: 3rem; */
   font-size: 1.1rem;
 }
 
